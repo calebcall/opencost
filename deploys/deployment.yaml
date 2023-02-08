@@ -41,15 +41,7 @@ spec:
           #   cpu: "1"
           # requests:
           #   memory: "200Mi"
-          #   cpu: ".5"
-        volumeMounts:
-        - mountPath: /data
-          name: opencost-data
+          #   cpu: ".5"        
       hostname: opencost
-      restartPolicy: Always
-      serviceAccountName: ""
-      volumes:
-      - name: opencost-data
-        persistentVolumeClaim:
-          claimName: opencost-data
+      restartPolicy: Always      
 status: {}
