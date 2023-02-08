@@ -20,6 +20,7 @@ spec:
       labels:
         app: opencost
     spec:
+      serviceAccountName: opencost
       containers:
       - env:
           - name: PROMETHEUS_SERVER_ENDPOINT
