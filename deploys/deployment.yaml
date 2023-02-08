@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: opencost
+  name: opencost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opencost
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: opencost
+    spec:
+      containers:
+      - env:
+        image: quay.io/kubecost1/kubecost-cost-model:latest:latest
+        imagePullPolicy: "Always"
+        name: opencost
+        ports:
+        - containerPort: 9003
+          name: opencost-9003
+        resources:
+          # limits:
+          #   memory: "400Mi"
+          #   cpu: "1"
+          # requests:
+          #   memory: "200Mi"
+          #   cpu: ".5"
+        volumeMounts:
+        - mountPath: /data
+          name: opencost-data
+      hostname: opencost
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: opencost-data
+        persistentVolumeClaim:
+          claimName: opencost-data
+status: {}

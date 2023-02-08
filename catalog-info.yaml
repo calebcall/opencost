@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "opencost"
+  description: "Opencost backend"
+  annotations:
+    github.com/project-slug: calebcall/opencost
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-label-selector: app=opencost
+    argocd/app-name: opencost
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "rockstars"

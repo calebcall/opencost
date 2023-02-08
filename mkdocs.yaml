@@ -1,0 +1,8 @@
+site_name: opencost
+site_description: Opencost backend
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
