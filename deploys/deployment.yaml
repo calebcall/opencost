@@ -11,15 +11,23 @@ spec:
     matchLabels:
       app: opencost
   strategy:
-    type: Recreate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
-    metadata:
-      creationTimestamp: null
+    metadata:      
       labels:
         app: opencost
     spec:
       containers:
       - env:
+          - name: PROMETHEUS_SERVER_ENDPOINT
+              value: "http://prometheus-server.prometheus.svc" # The endpoint should have the form http://<service-name>.<namespace-name>.svc
+          - name: CLOUD_PROVIDER_API_KEY
+              value: "AIzaSyD29bGxmHAVEOBYtgd8sYM2gM2ekfxQX4U" # The GCP Pricing API requires a key. This is supplied just for evaluation.
+          - name: CLUSTER_ID
+              value: "cluster-one" # Default cluster ID to use if cluster_id is not set in Prometheus metrics.
         image: quay.io/kubecost1/kubecost-cost-model:latest:latest
         imagePullPolicy: "Always"
         name: opencost
