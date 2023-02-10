@@ -7,8 +7,8 @@ data:
     {
       "provider": "custom",
       "description": "Default prices based on Something",
-      "CPU": "1.25",
-      "spotCPU": "1.25",
+      "CPU": "0.031611",
+      "spotCPU": "0.006655",
       "RAM": "0.004237",
       "spotRAM": "0.000892",
       "GPU": "0.95",
