@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opencost-conf
+data:  
+  default.json: |
+    {
+      "provider": "custom",
+      "description": "Default prices based on Something",
+      "CPU": "1.25",
+      "spotCPU": "1.25",
+      "RAM": "0.004237",
+      "spotRAM": "0.000892",
+      "GPU": "0.95",
+      "storage": "0.00005479452",
+      "zoneNetworkEgress": "0.01",
+      "regionNetworkEgress": "0.01",
+      "internetNetworkEgress": "0.12"
+    }
+
+---
